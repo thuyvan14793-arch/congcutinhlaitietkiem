@@ -1,4 +1,5 @@
 import streamlit as st
+st.set_page_config(page_title="Tính lãi tiền gửi tiết kiệm", page_icon="💰"
 import math
 
 # =========================
