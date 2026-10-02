@@ -1,9 +1,8 @@
 import streamlit as st
-st.set_page_config(page_title="Tính lãi tiền gửi tiết kiệm", page_icon="💰"
 import math
 
 # =========================
-# CẤU HÌNH TRANG
+# CẤU HÌNH TRANG (Chỉ gọi 1 lần duy nhất ở đầu)
 # =========================
 st.set_page_config(
     page_title="Tính lãi tiền gửi tiết kiệm",
@@ -105,7 +104,7 @@ if st.button("🧮 Tính lãi", type="primary", use_container_width=True):
     # ---------------------------------
     else:
 
-        # Lãi kép được tính theo chu kỳ nhận lãi.
+        # Lãi kép được tính theo chu kỳ nhận lãi
         if payout_type == "Lãnh lãi hàng tháng":
             periods = months
             periodic_rate = annual_rate / 12
@@ -115,8 +114,6 @@ if st.button("🧮 Tính lãi", type="primary", use_container_width=True):
             )
 
             total_interest = total_amount - principal
-
-            # Lãi phát sinh ở kỳ đầu tiên
             periodic_interest = principal * periodic_rate
 
         elif payout_type == "Lãnh lãi hàng quý":
@@ -128,8 +125,6 @@ if st.button("🧮 Tính lãi", type="primary", use_container_width=True):
             )
 
             total_interest = total_amount - principal
-
-            # Lãi phát sinh ở quý đầu tiên
             periodic_interest = principal * periodic_rate
 
         else:
@@ -142,7 +137,6 @@ if st.button("🧮 Tính lãi", type="primary", use_container_width=True):
             )
 
             total_interest = total_amount - principal
-
             periodic_interest = total_interest
 
     # =========================
@@ -196,16 +190,11 @@ if st.button("🧮 Tính lãi", type="primary", use_container_width=True):
     for key, value in details.items():
         col1, col2 = st.columns([1, 2])
         with col1:
-            st.write(f"**{key}**")
+            st.write(f"*{key}*")
         with col2:
             st.write(value)
 
     # =========================
     # LƯU Ý
     # =========================
-    st.info(
-        "💡 Lưu ý: Đây là công cụ mô phỏng theo công thức lãi suất nhập vào. "
-        "Lãi suất thực tế của ngân hàng có thể áp dụng quy định riêng về "
-        "ngày tính lãi, số ngày trong kỳ, phương thức nhập lãi vào gốc "
-        "và làm tròn số tiền."
-    )
+    st.info("💡 Kết quả tính toán mang tính chất tham khảo, lãi suất thực tế có thể thay đổi tùy ngân hàng và kỳ hạn.")
